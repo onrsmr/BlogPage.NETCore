@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Article>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@* ARTICLE INDEX *@
+
+<h1>ARTICLES</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered">
+    <tr>
+        <Thead>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>ViewCount</th>
+        <th>CategoryId</th>
+        <th>ImageId</th>
+        <th>AuthorId</th>
+        <th>CreatedBy</th>
+        <th>ModifiedBy</th>
+        <th>DeletedBy</th>
+        <th>CreatedDate</th>
+        <th>ModifiedDate</th>
+        <th>DeletedDate</th>
+        <th>IsDeleted</th>
+        <th>Actions</th>
+    </Thead>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@item.Content</td>
+                <td>@item.ViewCount</td>
+                <td>@item.CategoryId</td>
+                <td>@item.ImageId</td>
+                <td>@item.AuthorId</td>
+                <td>@item.CreatedBy</td>
+                <td>@item.ModifiedBy</td>
+                <td>@item.DeletedBy</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.ModifiedDate</td>
+                <td>@item.DeletedDate</td>
+                <td>@item.IsDeleted</td>
+                <td>
+                    <a asp-action="Update" asp-controller="Article" asp-route-id="@item.Id" class="btn btn btn-outline-warning">Update</a>
+                    <a asp-action="Delete" asp-controller="Article" asp-route-id="@item.Id" class="btn btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

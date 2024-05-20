@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Author>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@* AUTHOR INDEX *@
+
+<h1>AUTHORS</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>ArticleId</th>
+            <th>Password</th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td>@item.ArticleId</td>
+                <td>@item.Password</td>
+                <td>
+                    <a asp-action="Update" asp-controller="Author" asp-route-id="@item.Id" class="btn btn btn-outline-warning">Update</a>
+
+                    <a asp-action="Delete" asp-controller="Author" asp-route-id="@item.Id" class="btn btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
